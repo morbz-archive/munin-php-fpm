@@ -1,4 +1,9 @@
-munin-php-fpm
-=============
+Setup PHP-FPM
+-------------
 
-Munin PHP FPM Plugin
+This plugin requires PHP CLI.
+
+- ln -s /usr/share/munin/plugins/php-fpm /etc/munin/plugins/php-fpm-status : Provides graph about php-fpm processes status  
+- ln -s /usr/share/munin/plugins/php-fpm /etc/munin/plugins/php-fpm-memory : Provides graph about Memory processes usage  
+- ln -s /usr/share/munin/plugins/php-fpm /etc/munin/plugins/php-fpm-memoryPreview : Provides graph about Memory processes pools usage (RAM max, RAM min and RAM average)  
+- ln -s /usr/share/munin/plugins/php-fpm /etc/munin/plugins/php-fpm-cpu : Provides graph about processes CPU usage  
