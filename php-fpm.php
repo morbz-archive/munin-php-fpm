@@ -23,10 +23,9 @@ foreach ($result as $line) {
 
 	//which group
     if ($poolWord == 'master') {
-    	$groupName = 'master';
-    } else {
-    	$groupName = $poolName;
+    	continue;
     }
+    $groupName = $poolName;
 
 	//add group
     if (!isset($groups[$groupName])) {
@@ -60,7 +59,7 @@ switch ($fileCalled) {
 		$elements = array();
 		foreach ($groups as $name=>$array) {
 			$ramMb = $array['memory'] / $array['count'];
-			$label = $name == 'master' ? 'Master' : 'Pool ' . $name;
+			$label = 'Pool ' . $name;
 			$elements[$name] = array(
 				'label'	=>	$label,
 				'type'	=>	'GAUGE',
@@ -81,7 +80,7 @@ switch ($fileCalled) {
 		$elements = array();
 		foreach ($groups as $name=>$array) {
 			$cpu = $array['cpu'];
-			$label = $name == 'master' ? 'Master' : 'Pool ' . $name;
+			$label = 'Pool ' . $name;
 			$elements[$name] = array(
 				'label'	=>	$label,
 				'type'	=>	'GAUGE',
@@ -102,11 +101,9 @@ switch ($fileCalled) {
 // ------------------------------------------------------
 		$elements = array();
 		foreach ($groups as $name=>$array) {
-			if($name == 'master') {
-				continue;
-			}
+			$label = 'Pool ' . $name;
 			$elements[$name] = array(
-				'label'	=>	'Pool ' . $name,
+				'label'	=>	$label,
 				'type'	=>	'GAUGE',
 				'value'	=>	$array['count']
 			);
@@ -124,12 +121,10 @@ switch ($fileCalled) {
 // ------------------------------------------------------
 		$elements = array();
 		foreach ($groups as $name=>$array) {
-			if($name == 'master') {
-				continue;
-			}
 			$time = round($array['time'] / $array['count']);
+			$label = 'Pool ' . $name;
 			$elements[$name] = array(
-				'label'	=>	'Pool ' . $name,
+				'label'	=>	$label,
 				'type'	=>	'GAUGE',
 				'value'	=>	$time
 			);
@@ -149,6 +144,7 @@ switch ($fileCalled) {
 }
 
 //output
+ksort($config['elements']);
 if ($isConfig) {
 	//graph params
 	echo "graph_category PHP-FPM\n";
