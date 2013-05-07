@@ -7,8 +7,8 @@ This plugin requires PHP CLI.
 
 ### Install Plugin
 `$ cd /usr/share/munin/plugins/`  
-`$ [sudo] wget https://github.com/MorbZ/munin-php-fpm/blob/master/php-fpm.php`  
-`$ [sudo] chmod +x php-fpm.php`
+`$ [sudo] wget -O php-fpm https://github.com/MorbZ/munin-php-fpm/blob/master/php-fpm.php`  
+`$ [sudo] chmod +x php-fpm`
 
 ### Setup Graphs
 Average process memory per pool:  
@@ -23,5 +23,5 @@ Number of processes per pool:
 Average process age per pool:  
 `$ [sudo] ln -s /usr/share/munin/plugins/php-fpm /etc/munin/plugins/php-fpm-time`
 
-Dont' forget to restart Munin after changing plugins:  
+Don't forget to restart Munin after changing plugins:  
 `$ [sudo] service munin-node restart`
