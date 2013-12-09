@@ -20,6 +20,8 @@ foreach ($result as $line) {
         continue;
     }
     list($cpu, $time, $ram, $type, $poolWord, $poolName) = $args;
+	
+	$poolName = str_replace('.', '_', $poolName);
 
 	//which group
     if ($poolWord == 'master') {
